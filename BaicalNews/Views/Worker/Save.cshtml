@@ -1,0 +1,55 @@
+﻿@using BaikalNews.Domain.Enum
+@model BaikalNews.Domain.Models.Worker
+
+@{
+    ViewData["Title"] = "Save";
+}
+
+<h1>Save</h1>
+
+<h4>Worker</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" type="text"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" type="text"/>
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" type="email"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdRole" class="control-label"></label>
+                <select asp-for="IdRole" class="form-control"> 
+                    <option>@ListRole.Moderator </option>
+                    <option>@ListRole.Admin </option>
+                    <option>@ListRole.SuperAdmin </option>
+                    </select>
+                <span asp-validation-for="IdRole" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetWorkers">Вернутся назад</a>
+</div>
+

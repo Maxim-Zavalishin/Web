@@ -1,0 +1,49 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.__modal{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  cursor: pointer;
+  padding: 30px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.modal__main{
+  position: relative;
+  background-color: #fff;
+  min-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  cursor: default;
+  overflow-y: auto;
+}
+
+.modal__header{
+  margin-bottom: 20px;
+}
+.modal__open{
+  margin-left: 10px;
+}

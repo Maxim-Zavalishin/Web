@@ -1,0 +1,134 @@
+﻿@model List<BaikalNews.Domain.Models.Worker>
+
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
+<div class="main">
+    <h1>Список сотрудников</h1>
+
+    <div class="d-flex" style="align-items: flex-end">
+        <form id="form__search" class="d-flex" style="align-items: flex-end">
+            <div class="form-group">
+                <label asp-for="@Model[0].Id" class="control-label"></label>
+                <input  class="form-control" id="workerName" style="width: 150px; height: 38px;"/>
+                <span  class="text-danger"></span>
+            </div>
+            <input id="btn__search" class=" btn btn-primary d-flex" style="margin-left: 10px; align-items: flex-end;" type="submit" value="Поиск">
+        </form>
+    </div>
+        <a asp-action="Save" >Добавить нового сотрудника</a>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].Id)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].Name)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].Lastname)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].Email)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].DateCreated)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model[0].IdRole)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var worker in Model)
+                {
+                    <tr>
+                        <th>
+                            @worker.Id
+                        </th>
+                        <th>
+                            @worker.Name
+                        </th>
+                        @if (worker.Lastname != null)
+                        {
+                            <th>
+                                @worker.Lastname
+                            </th>
+                        }
+                        else
+                        {
+                            <th>
+                                Null
+                            </th>
+                        }
+                        <th>
+                            @worker.Email
+                        </th>
+                        <th>
+                            @worker.DateCreated
+                        </th>
+                        <th>
+                            @worker.IdRole
+                        </th>
+                        <th>
+
+                            @if (worker.Id != 1)
+                            {
+                                @Html.ActionLink("Изменить", "Save", new { id=worker.Id }) 
+                                    <span>|</span>
+                                @Html.ActionLink("Удалить", "Delete", new { id=worker.Id })
+                            }
+                        </th>
+
+                    </tr>
+                }
+        </tbody>
+    </table>
+</div>
+
+
+@*<div class="__modal">
+    <div class="modal__main">
+        <h2 class="modal__header">Новый сотрудник</h2>
+        <div class="modal__container">
+            <form asp-controller="Worker" asp-action="Save" id="formApi">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model[0].Name" class="control-label"></label>
+                    <input asp-for="@Model[0].Name"class="form-control" id="workerName" />
+                    <span  asp-validation-for="@Model[0].Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model[0].Lastname" class="control-label"></label>
+                    <input asp-for="@Model[0].Lastname"  class="form-control" id="workerLastname"/>
+                    <span  asp-validation-for="@Model[0].Lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model[0].Email" class="control-label"></label>
+                    <input asp-for="@Model[0].Email" class="form-control" id="workerEmail"/>
+                    <span  asp-validation-for="@Model[0].Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model[0].Password" class="control-label"></label>
+                    <label asp-for="@Model[0].Password" class="form-control" id="workerPassword"/>
+                    <span asp-validation-for="@Model[0].Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model[0].IdRole" class="control-label"></label>
+                    <label asp-for="@Model[0].IdRole" class="form-control" id="workerIdRole"/>
+                    <span asp-validation-for="@Model[0].IdRole" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Сохранить" class="save btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>*@
+
+<script src="~/js/worker.js" ></script>
